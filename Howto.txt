@@ -1,3 +1,5 @@
-git commit -a -m 'Commit msg here'
+To add: git add NAMEHERE
 
-git push origin master
+To commit: git commit -a -m 'Commit msg here'
+
+To push: git push origin master
