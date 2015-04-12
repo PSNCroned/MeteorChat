@@ -1,0 +1,3 @@
+git commit -a -m 'Commit msg here'
+
+git push origin master
