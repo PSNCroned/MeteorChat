@@ -11,14 +11,14 @@
 			<div id="text">
 				{{#each msgList}}
 				<div class="messagecontainer">
-					{{msg}}
+					[{{sender}}]: {{msg}}
 				</div>
 				{{/each}}
 			</div>
 			{{#if currentUser}}
 			<div id="input">
-				<form>
-					<input type="text" style="width: 435px;">
+				<form id="msgForm">
+					<input type="text" id="msgText" style="width: 435px;">
 					<input type="submit">
 				</form>
 			</div>
@@ -33,7 +33,7 @@
 <template name="usernames">
 	{{#each nameList}}
 	<div class="namebox">
-		{{_id}}
+		{{username}}
 	</div>
 	{{/each}}
 </template>

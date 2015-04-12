@@ -39,8 +39,7 @@
 	width: 500px;
 	height: 350px;
 	border: 1px solid black;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 #input {
@@ -52,7 +51,7 @@
 
 .messagecontainer {
 	width: 480px;
-	border: 1px solid black;
+	word-wrap: break-word;
 }
 
 #loginbuttons {
