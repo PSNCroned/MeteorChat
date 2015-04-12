@@ -1,3 +1,5 @@
+//test
+
 ChatList = new Mongo.Collection('chat');
 UserList = new Mongo.Collection('chatusers');
 
