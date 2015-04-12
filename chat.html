@@ -1,0 +1,39 @@
+<head>
+	<title>Chat</title>
+</head>
+
+<body>
+	<div id="loginbuttons">
+		{{> loginButtons}}
+	</div>
+	<div id="chatbox">
+		<div id="textwin">
+			<div id="text">
+				{{#each msgList}}
+				<div class="messagecontainer">
+					{{msg}}
+				</div>
+				{{/each}}
+			</div>
+			{{#if currentUser}}
+			<div id="input">
+				<form>
+					<input type="text" style="width: 435px;">
+					<input type="submit">
+				</form>
+			</div>
+			{{/if}}
+		</div>
+		<div id="users">
+			{{> usernames}}
+		</div>
+	</div>
+</body>
+
+<template name="usernames">
+	{{#each nameList}}
+	<div class="namebox">
+		{{_id}}
+	</div>
+	{{/each}}
+</template>
