@@ -1,5 +1,3 @@
-//test
-
 ChatList = new Mongo.Collection('chat');
 UserList = new Mongo.Collection('chatusers');
 
@@ -11,7 +9,22 @@ if (Meteor.isClient) {
 
 	setInterval(function () {
 		scroll();
+		var userList = UserList.find().fetch();
+		var timesFailed = 0;
+		for (var i = 0; i < userList.length; i++) {
+			if (userList[i].username != Meteor.user().username) {
+				timesFailed++;
+			}
+		}
+		if (timesFailed == userList.length) {
+			var userObj = {"username": Meteor.user().username}
+			UserList.insert(userObj);
+		}
 	}, 100);
+
+	window.onbeforeunload = function (e) {
+		Meteor.call("removeUser", Meteor.user().username);
+	}
 
 	//Helpers
 	Template.body.helpers({
@@ -22,7 +35,7 @@ if (Meteor.isClient) {
 	
 	Template.usernames.helpers({
 		"nameList": function() {
-			return Meteor.users.find().fetch();
+			return UserList.find().fetch();
 		}
 	});
 
@@ -34,8 +47,8 @@ if (Meteor.isClient) {
 			var sender = Meteor.user().username;
 			var msgObj = {"sender": sender, "msg": msg};
 			form.find("#msgText").value = "";
-			console.log("Sent message: " + msgObj.msg);
 			ChatList.insert(msgObj);
+			console.log("Sent message: " + msgObj.msg);
 		}
 	});
 
@@ -45,5 +58,9 @@ if (Meteor.isClient) {
 } 
 
 if (Meteor.isServer) {
-	
+	Meteor.methods({
+		"removeUser": function (name) {
+			UserList.remove({ "username": { $eq: name } });
+		}
+	});
 }

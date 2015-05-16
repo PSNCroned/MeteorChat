@@ -10,18 +10,18 @@
 		<div id="textwin">
 			<div id="text">
 				{{#each msgList}}
-				<div class="messagecontainer">
-					[{{sender}}]: {{msg}}
-				</div>
+					<div class="messagecontainer">
+						[{{sender}}]: {{msg}}
+					</div>
 				{{/each}}
 			</div>
 			{{#if currentUser}}
-			<div id="input">
-				<form id="msgForm">
-					<input type="text" id="msgText" style="width: 435px;">
-					<input type="submit">
-				</form>
-			</div>
+				<div id="input">
+					<form id="msgForm">
+						<input type="text" id="msgText" style="width: 435px;">
+						<input type="submit">
+					</form>
+				</div>
 			{{/if}}
 		</div>
 		<div id="users">
@@ -32,8 +32,8 @@
 
 <template name="usernames">
 	{{#each nameList}}
-	<div class="namebox">
-		{{username}}
-	</div>
+		<div class="namebox">
+			{{username}}
+		</div>
 	{{/each}}
 </template>
